@@ -3,6 +3,11 @@ on: push
 jobs:
   MSVC-Test:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        float_as_real_type: [ON, OFF]
+        use_gemm: [ON, OFF]
+        build_type: [Debug, Release]
     steps:
       - name: "Install latest MSVC compiler"
         uses: ilammy/msvc-dev-cmd@v1.12.1
@@ -20,4 +25,5 @@ jobs:
         run: |
           mkdir Test/build
           cd Test/build
-          cmake -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DPLSSVM_USE_FLOAT_AS_REAL_TYPE=${{ matrix.float_as_real_type }} -DPLSSVM_USE_GEMM=${{ matrix.use_gemm }} .. ..
