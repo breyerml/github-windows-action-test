@@ -2,5 +2,5 @@
 argparse
 scikit-learn
 numpy
-pyamdgpuinfo; ; platform_system != "Windows"
+pyamdgpuinfo; platform_system != "Windows"
 humanize
