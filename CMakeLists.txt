@@ -6,7 +6,7 @@ project(
   LANGUAGES CXX)
 
 
-find_package(Python3 REQUIRED COMPONENTS Interpreter Development NumPy)
+find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
 include(${PROJECT_SOURCE_DIR}/cmake/check_python_libs.cmake)
 set(TEST_REQUIRED_LIBS argparse sklearn humanize numpy)
