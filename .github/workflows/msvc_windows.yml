@@ -13,9 +13,9 @@ jobs:
         with:
           path: Test
       - name: "Install Python dependencies"
-        uses: py-actions/py-dependency-install@v4
-        with:
-          path: "Test/requirements.txt"
+        run: |
+          py -m pip install --upgrade pip setuptools wheel
+          py -m pip install -r Test/requirements.txt
       - name: "Configure Test using CMake"
         run: |
           mkdir Test/build
