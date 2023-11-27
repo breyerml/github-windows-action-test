@@ -15,7 +15,7 @@ jobs:
       - name: "Install Python dependencies"
         uses: py-actions/py-dependency-install@v4
         with:
-          path: "requirements.txt"
+          path: "Test/requirements.txt"
       - name: "Configure Test using CMake"
         run: |
           mkdir Test/build
