@@ -6,6 +6,15 @@ project(
   LANGUAGES CXX)
 
 
+option(PLSSVM_USE_GEMM "FOO" OFF)
+option(PLSSVM_USE_FLOAT_AS_REAL_TYPE "BAR" OFF)
+
+
+message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+message(STATUS "PLSSVM_USE_GEMM: ${PLSSVM_USE_GEMM}")
+message(STATUS "PLSSVM_USE_FLOAT_AS_REAL_TYPE: ${PLSSVM_USE_FLOAT_AS_REAL_TYPE}")
+
+
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
 include(${PROJECT_SOURCE_DIR}/cmake/check_python_libs.cmake)
