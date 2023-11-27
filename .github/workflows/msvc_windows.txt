@@ -1,0 +1,23 @@
+name: Windows MSVC CPU
+on: push
+jobs:
+  MSVC-Test:
+    runs-on: windows-latest
+    steps:
+      - name: "Install latest MSVC compiler"
+        uses: ilammy/msvc-dev-cmd@v1.12.1
+      - name: "Install cmake 3.25.2"
+        uses: lukka/get-cmake@v3.25.2
+      - name: "Clone the PLSSVM repository into PLSSVM/"
+        uses: actions/checkout@v2
+        with:
+          path: Test
+      - name: "Install Python dependencies"
+        uses: py-actions/py-dependency-install@v4
+        with:
+          path: "requirements.txt"
+      - name: "Configure Test using CMake"
+        run: |
+          mkdir Test/build
+          cd Test/build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
