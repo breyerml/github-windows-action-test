@@ -28,4 +28,5 @@ jobs:
           cd Test/build
           cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DPLSSVM_USE_FLOAT_AS_REAL_TYPE=${{ matrix.float_as_real_type }} -DPLSSVM_USE_GEMM=${{ matrix.use_gemm }} .. ..
           echo "PATH: \"$PATH\""
+          echo "GITHUB_PATH: \"$GITHUB_PATH\""
           ctest
