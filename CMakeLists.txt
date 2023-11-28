@@ -20,17 +20,11 @@ if (WIN32)
     set(BUILD_SHARED_LIBS TRUE)
 endif ()
 
-
-find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
-
-include(${PROJECT_SOURCE_DIR}/cmake/check_python_libs.cmake)
-set(TEST_REQUIRED_LIBS argparse humanize numpy) #sklearn
-message(STATUS "Checking required Python3 libraries (${TEST_REQUIRED_LIBS}) to to generate the test file.")
-check_python_libs("${TEST_REQUIRED_LIBS}" "or set PLSSVM_GENERATE_TEST_FILE to OFF.")
-
 add_library(mylib SHARED test.cpp)
+add_library(mylib2 SHARED test.cpp)
 
 set(EXE_NAME prog)
 add_executable(${EXE_NAME} main.cpp)
 
 target_link_libraries(${EXE_NAME} PUBLIC mylib)
+target_link_libraries(${EXE_NAME} PUBLIC mylib2)
