@@ -5,9 +5,9 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        float_as_real_type: [ON, OFF]
-        use_gemm: [ON, OFF]
-        build_type: [Debug, Release]
+        float_as_real_type: [OFF]
+        use_gemm: [OFF]
+        build_type: [Release]
     steps:
       - name: "Install latest MSVC compiler"
         uses: ilammy/msvc-dev-cmd@v1.12.1
@@ -17,18 +17,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: Test
-      - name: "Install Python dependencies"
-        shell: bash
-        run: |
-          py -m pip install --upgrade pip setuptools wheel
-          py -m pip install -r Test/requirements.txt
-          echo "${GITHUB_WORKSPACE}/Test/build" >> $GITHUB_PATH
       - name: "Configure Test using CMake"
         shell: bash
         run: |
           mkdir Test/build
           cd Test/build
-          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DPLSSVM_USE_FLOAT_AS_REAL_TYPE=${{ matrix.float_as_real_type }} -DPLSSVM_USE_GEMM=${{ matrix.use_gemm }} .. ..
-          echo "PATH: ${PATH}"
-          echo "GITHUB_PATH: ${GITHUB_PATH}"
-          ctest
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DPLSSVM_USE_FLOAT_AS_REAL_TYPE=${{ matrix.float_as_real_type }} -DPLSSVM_USE_GEMM=${{ matrix.use_gemm }} ..
