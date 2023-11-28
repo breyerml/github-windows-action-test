@@ -1,3 +1,4 @@
 
+#define DllExport   __declspec( dllexport )
 
-extern int val;
+DllExport int val;
