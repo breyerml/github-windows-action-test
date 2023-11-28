@@ -26,4 +26,6 @@ jobs:
           mkdir Test/build
           cd Test/build
           cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DPLSSVM_USE_FLOAT_AS_REAL_TYPE=${{ matrix.float_as_real_type }} -DPLSSVM_USE_GEMM=${{ matrix.use_gemm }} .. ..
+          set PATH=%PATH%;%cd%
+          echo %PATH%
           ctest
