@@ -22,7 +22,7 @@ jobs:
         run: |
           py -m pip install --upgrade pip setuptools wheel
           py -m pip install -r Test/requirements.txt
-          echo "${GITHUB_WORKSPACE}/build" >> $GITHUB_PATH
+          echo "${GITHUB_WORKSPACE}/Test/build" >> $GITHUB_PATH
       - name: "Configure Test using CMake"
         shell: bash
         run: |
