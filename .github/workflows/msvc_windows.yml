@@ -18,15 +18,17 @@ jobs:
         with:
           path: Test
       - name: "Install Python dependencies"
+        shell: bash
         run: |
           py -m pip install --upgrade pip setuptools wheel
           py -m pip install -r Test/requirements.txt
           echo "${GITHUB_WORKSPACE}/build" >> $GITHUB_PATH
       - name: "Configure Test using CMake"
+        shell: bash
         run: |
           mkdir Test/build
           cd Test/build
           cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DPLSSVM_USE_FLOAT_AS_REAL_TYPE=${{ matrix.float_as_real_type }} -DPLSSVM_USE_GEMM=${{ matrix.use_gemm }} .. ..
-          echo "PATH: \"$PATH\""
-          echo "GITHUB_PATH: \"$GITHUB_PATH\""
+          echo "PATH: ${PATH}"
+          echo "GITHUB_PATH: ${GITHUB_PATH}"
           ctest
