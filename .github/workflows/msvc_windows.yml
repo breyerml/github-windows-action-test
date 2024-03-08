@@ -12,7 +12,7 @@ jobs:
       - name: "Install latest MSVC compiler"
         uses: crazy-max/ghaction-chocolatey@v3
         with:
-          args: install visualstudio2022community visualstudio2022-workload-nativedesktop
+          args: install visualstudio2022buildtools vcredist140
       - name: load MSVC
         uses: TheMrMilchmann/setup-msvc-dev@v3
         with:
