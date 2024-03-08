@@ -9,10 +9,39 @@ jobs:
         use_gemm: [OFF]
         build_type: [Release]
     steps:
+      - name: "Test insall"
+        run: |
+          Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\Installer\"
+          $InstallPath = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
+          $componentsToRemove= @(
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ARM.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ARM"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ARM64.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ARM64"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ATL.ARM.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ATL.ARM"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ATL.ARM64.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ATL.ARM64"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ATL.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.ATL"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.MFC.ARM.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.MFC.ARM"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.MFC.ARM64.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.MFC.ARM64"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.MFC.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.MFC"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.x86.x64.Spectre"
+            "Microsoft.VisualStudio.Component.VC.14.37.17.7.x86.x64"
+          )
+          [string]$workloadArgs = $componentsToRemove | ForEach-Object {" --remove " +  $_}
+          $Arguments = ('/c', "vs_installer.exe", 'modify', '--installPath', "`"$InstallPath`"",$workloadArgs, '--quiet', '--norestart', '--nocache')
+          # should be run twice
+          $process = Start-Process -FilePath cmd.exe -ArgumentList $Arguments -Wait -PassThru -WindowStyle Hidden
+          $process = Start-Process -FilePath cmd.exe -ArgumentList $Arguments -Wait -PassThru -WindowStyle Hidden
       - name: "Install latest MSVC compiler"
         uses: ilammy/msvc-dev-cmd@v1.13.0
         with:
-          toolset: 14.36
+          toolset: 14.37
       - name: "Install cmake 3.25.2"
         uses: lukka/get-cmake@v3.28.3
       - name: "Clone the PLSSVM repository into PLSSVM/"
