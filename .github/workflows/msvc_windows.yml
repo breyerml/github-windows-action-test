@@ -16,7 +16,7 @@ jobs:
       - name: load MSVC
         uses: TheMrMilchmann/setup-msvc-dev@v3
         with:
-          vs-path: C:\Program Files\Microsoft Visual Studio\2022\Community
+          vs-path: C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools
       - name: "Install cmake 3.25.2"
         uses: lukka/get-cmake@v3.28.3
       - name: "Clone the PLSSVM repository into PLSSVM/"
