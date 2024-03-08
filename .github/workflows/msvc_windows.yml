@@ -9,6 +9,10 @@ jobs:
         use_gemm: [OFF]
         build_type: [Release]
     steps:
+      - name: "TEST"
+        shell: bash
+        run: |
+          type C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat
       - name: "Install latest MSVC compiler"
         uses: ilammy/msvc-dev-cmd@v1.13.0
         with:
