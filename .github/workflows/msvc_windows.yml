@@ -12,7 +12,7 @@ jobs:
       - name: "Install latest MSVC compiler"
         uses: ilammy/msvc-dev-cmd@v1.13.0
         with:
-          toolset: 14.39
+          toolset: 14.36
       - name: "Install cmake 3.25.2"
         uses: lukka/get-cmake@v3.28.3
       - name: "Clone the PLSSVM repository into PLSSVM/"
