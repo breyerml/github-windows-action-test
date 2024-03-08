@@ -13,7 +13,7 @@ jobs:
         run: |
           Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\Installer\"
           $InstallPath = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
-          $componentsToRemove= @(
+          $componentsToAdd= @(
             "Microsoft.VisualStudio.Component.VC.14.37.17.7.ARM.Spectre"
             "Microsoft.VisualStudio.Component.VC.14.37.17.7.ARM"
             "Microsoft.VisualStudio.Component.VC.14.37.17.7.ARM64.Spectre"
