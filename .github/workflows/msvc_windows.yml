@@ -12,11 +12,11 @@ jobs:
       - name: "Install latest MSVC compiler"
         uses: crazy-max/ghaction-chocolatey@v3
         with:
-          args: install visualstudio2022community visualstudio2022buildtools
+          args: install visualstudio2022community visualstudio2022-workload-nativedesktop
       - name: load MSVC
         uses: TheMrMilchmann/setup-msvc-dev@v3
         with:
-          vs-path: C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools
+          vs-path: C:\Program Files\Microsoft Visual Studio\2022\Community
       - name: "Install cmake 3.25.2"
         uses: lukka/get-cmake@v3.28.3
       - name: "Clone the PLSSVM repository into PLSSVM/"
