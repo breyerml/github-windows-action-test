@@ -12,7 +12,7 @@ jobs:
       - name: "Install latest MSVC compiler"
         uses: crazy-max/ghaction-chocolatey@v3
         with:
-          args: install visualstudio2022community visualstudio2022buildtools VisualCppBuildTools
+          args: install visualstudio2022community visualstudio2022buildtools
       - name: load MSVC
         uses: TheMrMilchmann/setup-msvc-dev@v3
         with:
