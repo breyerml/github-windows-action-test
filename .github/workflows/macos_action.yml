@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: "Install cmake 3.28.3"
         uses: lukka/get-cmake@v3.28.3
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: "17.0"
       - name: "Clone the PLSSVM repository into PLSSVM/"
         uses: actions/checkout@v4.1.1
         with:
