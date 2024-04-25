@@ -22,7 +22,7 @@ jobs:
       - name: "Install Python dependencies"
         run: |
           pip3 install --upgrade pip setuptools wheel
-          pip3 install -r PLSSVM/install/python_requirements.txt
+          pip3 install argparse scikit-learn humanize
       - name: "Configure PLSSVM using CMake"
         run: |
           mkdir PLSSVM/build
