@@ -1,0 +1,24 @@
+name: MacOS CPU
+on: push
+jobs:
+  MSVC-Test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        float_as_real_type: [OFF]
+        use_gemm: [OFF]
+        build_type: [Release]
+    steps:
+      - name: "Install cmake 3.28.3"
+        uses: lukka/get-cmake@v3.28.3
+      - name: "Clone the PLSSVM repository into PLSSVM/"
+        uses: actions/checkout@v4.1.1
+        with:
+          path: Test
+      - name: "Configure Test using CMake"
+        shell: bash
+        run: |
+          mkdir Test/build
+          cd Test/build
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DPLSSVM_USE_FLOAT_AS_REAL_TYPE=${{ matrix.float_as_real_type }} -DPLSSVM_USE_GEMM=${{ matrix.use_gemm }} ..
+          cmake --build .
