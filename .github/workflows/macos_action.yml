@@ -25,8 +25,8 @@ jobs:
           path: PLSSVM
       - name: "Install Python dependencies"
         run: |
-          pip3 install --upgrade pip setuptools wheel
-          pip3 install argparse scikit-learn humanize numpy
+          /usr/local/Frameworks/Python.framework/Versions/3.12/bin/python3.12 -m pip install --upgrade pip setuptools wheel
+          /usr/local/Frameworks/Python.framework/Versions/3.12/bin/python3.12 -m pip install argparse scikit-learn humanize numpy
       - name: "Configure PLSSVM using CMake"
         run: |
           mkdir PLSSVM/build
