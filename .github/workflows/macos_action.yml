@@ -15,7 +15,8 @@ jobs:
         with:
           version: "15.0"
       - name: Install Python
-        uses: actions/setup-python@v5
+        run: |
+          brew install python
       - name: "Clone the PLSSVM repository into PLSSVM/"
         uses: actions/checkout@v4.1.1
         with:
