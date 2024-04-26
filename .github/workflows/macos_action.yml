@@ -18,6 +18,10 @@ jobs:
         run: |
           brew install python3
           brew install numpy
+          brew install libomp
+      - name: "Install Python dependencies"
+        run: |
+          python3 -m pip install argparse scikit-learn humanize --break-system-packages
       - name: "Clone the PLSSVM repository into PLSSVM/"
         uses: actions/checkout@v4.1.1
         with:
